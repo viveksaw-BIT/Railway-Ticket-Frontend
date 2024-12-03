@@ -1,0 +1,164 @@
+<div class="row my-5">
+  <!-- <div class="col-md-12 col-xl-8">
+    <h5 class="mb-3">Recent Orders</h5>
+    
+  </div> -->
+  <!-- {{logUserData}} -->
+  <!-- In your component's HTML file -->
+<!-- <button type="button" class="btn btn-danger" (click)="showModal = true">
+  Delete
+</button> -->
+
+<!-- Modal Delete-->
+<!-- <div class="modal fade" [ngClass]="{ 'show': showModal }" tabindex="-1" role="dialog" aria-hidden="true" [style.display]="showModal ? 'block' : 'none'">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmation</h5> -->
+        <!-- <button type="button" class="close" (click)="showModal = false" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      <!-- </div>
+      <div class="modal-body">
+        Are you sure you want to delete?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="showModal = false">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-danger" (click)="deleteTrain(); showModal = false">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>  -->
+<!--Modal Delete-->
+
+
+  @if(logUserData.user_type==0){
+    @for (analyticAdmin of AnalyticAdmin; track analyticAdmin) {
+      <div class="col-md-6 col-xl-3">
+        <app-card [showHeader]="false" blockClass="dashboard-card">
+          <h6 class="mb-2 f-w-400 text-muted">{{ analyticAdmin.title }}</h6>
+          <h4 class="mb-1 {{ analyticAdmin.color }}">
+            {{ analyticAdmin.amount }}
+          </h4>
+        </app-card>
+      </div>
+    }
+  }
+  @else{
+    @for (analyticUser of AnalyticUser; track analyticUser) {
+      <div class="col-md-6 col-xl-3">
+        <app-card [showHeader]="false" blockClass="dashboard-card">
+          <h6 class="mb-2 f-w-400 text-muted">{{ analyticUser.title }}</h6>
+          <h4 class="mb-1 {{ analyticUser.color }}">
+            {{ analyticUser.amount }}
+          </h4>
+        </app-card>
+      </div>
+    }
+    <!-- <div class="col-md-12 col-xl-12">
+      <h1 class="mb-1 blue">Welcome User</h1>
+    </div> -->
+
+  }
+  <!-- <div class="col-md-12 col-xl-12">
+    <app-monthly-bar-chart />
+  </div> -->
+  <!-- <div class="col-md-12 col-xl-4">
+    <app-income-overview-chart />
+  </div> -->
+
+  <!-- <div class="col-md-12 col-xl-8">
+    <h5 class="mb-3">Recent Orders</h5>
+    <div class="card tbl-card">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th>TRACKING NO.</th>
+              <th>PRODUCT NAME</th>
+              <th>STATUS</th>
+              <th class="text-end">TOTAL ORDER</th>
+              <th class="text-end">TOTAL AMOUNT</th>
+            </tr>
+          </thead> -->
+          <!-- <tbody>
+            @for (order of recentOrder; track order) {
+              <tr>
+                <td>
+                  <a href="javascript:" class="text-muted">{{ order.id }}</a>
+                </td>
+                <td>{{ order.name }}</td>
+                <td>
+                  <span class="d-block">
+                    <i class="badge-circle {{ order.status_type }} f-10 m-r-5"></i>
+                    {{ order.status }}
+                  </span>
+                </td>
+                <td class="text-end">{{ order.quantity }}</td>
+                <td class="text-end">{{ order.amount }}</td>
+              </tr>
+            }
+          </tbody> -->
+        <!-- </table>
+      </div>
+    </div>
+  </div> -->
+  <!-- <div class="col-md-12 col-xl-4">
+    <app-analytics-chart />
+  </div> -->
+
+  <!-- <div class="col-md-12 col-xl-8">
+    <app-sales-report-chart />
+  </div>
+  <div class="col-md-12 col-xl-4">
+    <h5 class="mb-3">Transaction History</h5>
+    <div class="card">
+      <div class="list-group list-group-flush">
+        @for (history of transaction; track history) {
+          <a href="javascript:" class="list-group-item list-group-item-action px-3">
+            <div class="d-flex">
+              <div class="flex-shrink-0">
+                <div class="avatar avatar-s rounded-circle {{ history.background }}">
+                  <i class="f-16" antIcon type="{{ history.icon }}" theme="outline"></i>
+                </div>
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h6 class="mb-1">{{ history.title }}</h6>
+                <p class="mb-0 text-muted">{{ history.time }}</p>
+              </div>
+              <div class="flex-shrink-0 text-end">
+                <h6 class="mb-1">{{ history.amount }}</h6>
+                <p class="mb-0 text-muted">{{ history.percentage }}</p>
+              </div>
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="row justify-content-between">
+          <div class="col-auto">
+            <h5>Help & Support Chat</h5>
+            <p class="mb-3">Typical replay within 5 min</p>
+          </div>
+          <div class="col-auto">
+            <div class="user-group mb-3">
+              <img src="assets/images/user/avatar-1.jpg" alt="image" />
+              <img src="assets/images/user/avatar-2.jpg" alt="image" />
+              <img src="assets/images/user/avatar-3.jpg" alt="image" />
+            </div>
+          </div>
+        </div>
+        <div class="d-grid">
+          <div class="btn btn-primary">Need Help?</div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- [ sample-page ] end -->
+</div>

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "1",
+    "name": "Train Express 1",
+    "number": "101",
+    "date": "01-09-2024",
+    "sourceStation": "Station 1A",
+    "destinationStation": "Station 10A"
+  },
+  {
+    "id": "2",
+    "name": "Train Express 2",
+    "number": "102",
+    "date": "02-09-2024",
+    "sourceStation": "Station 1B",
+    "destinationStation": "Station 10B"
+  },
+  {
+    "id": "3",
+    "name": "Train Express 3",
+    "number": "103",
+    "date": "03-09-2024",
+    "sourceStation": "Station 1C",
+    "destinationStation": "Station 10C"
+  },
+  {
+  "id": "4",
+    "name": "Train Express 4",
+    "number": "104",
+    "date": "03-09-2024",
+    "sourceStation": "Station 1C",
+    "destinationStation": "Station 10C"
+  },
+  {
+    "id": "5",
+    "name": "Train Express 5",
+    "number": "105",
+    "date": "03-09-2024",
+    "sourceStation": "Station 1C",
+    "destinationStation": "Station 10C"
+  },
+  {
+    "id": "6",
+    "name": "Train Express 6",
+    "number": "106",
+    "date": "03-09-2024",
+    "sourceStation": "Station 1C",
+    "destinationStation": "Station 10C"
+  },
+  {
+    "id": "7",
+    "name": "Train Express 7",
+    "number": "107",
+    "date": "03-09-2024",
+    "sourceStation": "Station 1C",
+    "destinationStation": "Station 10C"
+  },
+  {
+    "id": "8",
+    "name": "Train Express 8",
+    "number": "108",
+    "date": "03-09-2024",
+    "sourceStation": "Station 1C",
+    "destinationStation": "Station 10C"
+  },
+  {
+    "id": "9",
+    "name": "Train Express 9",
+    "number": "109",
+    "date": "03-09-2024",
+    "sourceStation": "Station 1C",
+    "destinationStation": "Station 10C"
+  },
+  {
+    "id": "10",
+    "name": "Train Express 10",
+    "number": "110",
+    "date": "03-09-2024",
+    "sourceStation": "Station 1C",
+    "destinationStation": "Station 10C"
+  },
+  {
+    "id": "11",
+    "name": "Train Express 11",
+    "number": "111",
+    "date": "03-09-2024",
+    "sourceStation": "Station 1C",
+    "destinationStation": "Station 10C"
+  },
+  {
+    "id": "12",
+    "name": "Train Express 12",
+    "number": "112",
+    "date": "03-09-2024",
+    "sourceStation": "Station 1C",
+    "destinationStation": "Station 10C"
+  },
+  {
+    "id": "13",
+    "name": "Train Express 13",
+    "number": "113",
+    "date": "03-09-2024",
+    "sourceStation": "Station 1C",
+    "destinationStation": "Station 10C"
+  },
+  {
+    "id": "14",
+    "name": "Train Express 14",
+    "number": "114",
+    "date": "03-09-2024",
+    "sourceStation": "Station 1C",
+    "destinationStation": "Station 10C"
+  },
+  {
+    "id": "15",
+    "name": "Train Express 15",
+    "number": "115",
+    "date": "03-09-2024",
+    "sourceStation": "Station 1C",
+    "destinationStation": "Station 10C"
+  }
+]

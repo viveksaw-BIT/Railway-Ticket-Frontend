@@ -1,0 +1,449 @@
+<!-- <div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="Hello Card" blockClass="pc-component">
+      <p>
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+        in culpa qui officia deserunt mollit anim id est laborum."
+      </p>
+    </app-card>
+  </div>
+</div> -->
+<!-- <p>{{ currentDate | date }}</p> -->
+<div class="page-header">
+  <div class="page-block">
+    <div class="row align-items-center">
+      <div class="col-md-12">
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item">
+              <a [routerLink]="['/dashboard/default/']" class="home">Home</a>
+          </li>
+          <li class="breadcrumb-item">
+              <a class="f-14 f-w-600">Booking Details</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-12">
+        <div class="page-header-title">
+              <h2 class="mb-0 f-w-600 mt-2">Booking Details</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Delete-->
+<div class="modal fade" [ngClass]="{ 'show': showModal }" tabindex="-1" role="dialog" aria-hidden="true" [style.display]="showModal ? 'block' : 'none'">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmation</h5>
+        <!-- <button type="button" class="close" (click)="showModal = false" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        Are you sure you want to cancel?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="showModal = false">
+          No
+        </button>
+        <button type="button" class="btn btn-danger" (click)="cancelTicket(); showModal = false">
+          Yes, I want to cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div> 
+<!--Modal Delete-->
+
+<!-- Success Modal -->
+<div class="modal fade" [ngClass]="{ 'show': successModal }" tabindex="-1" role="dialog" aria-hidden="true" [style.display]="successModal ? 'block' : 'none'">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Information</h5>
+        <!-- <button type="button" class="close" (click)="successModal = false" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        {{message}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="successModal = false">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Success Modal -->
+
+<div class="row">
+  <div class="col-sm-12">
+      <div class="card my-5">
+        <div class="card-body">
+          <!-- <div class="d-flex justify-content-between align-items-end mb-4">
+            <h3 class="mb-0"><b>Sign up</b></h3>
+            <a [routerLink]="['/login']" class="link-primary">Already have an account?</a>
+          </div> -->
+          @if(successMessage){
+            <div class="alert alert-success alert-success-sm mt-3">
+              {{ successMessage }}
+            </div>
+          }
+          @if(errorMessage){
+            <div class="alert alert-danger alert-danger-sm mt-3">
+              {{ errorMessage }}
+            </div>
+          }
+          @if(validationMessage){
+            <div class="alert alert-danger alert-danger-sm mt-3">
+              {{ validationMessage }}
+            </div>
+          }
+          <!-- <div class="row">
+            <div class="col-md-12 text-center">
+              <img class="img-fluid rounded-circle" src="assets/images/user/avatar-2.jpg" />
+            </div>
+           </div>  -->
+           @if(bookingDetails)
+           {
+            <div id="content-to-print">
+              <div class="row">
+                <h3>Ticket Details</h3>
+                <hr>
+                <div class="col-md-3">
+                  <div class="form-group mb-0">
+                    <label class="form-label">Booking ID</label>
+                    <h5>BKG-{{bookingDetails.id}}</h5>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group mb-0">
+                    <label class="form-label">Train Name</label>
+                    <h5>{{bookingDetails.train.name}}</h5>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group mb-0">
+                    <label class="form-label">Train Number</label>
+                    <h5>{{bookingDetails.train.number}}</h5>
+                  </div>
+                </div>
+              </div>
+                  <!-- <div class="form-group mb-6">
+                    <h5>{{sourceStation+"-"+destinationStation}} | {{date | date}}</h5>
+                  </div> -->
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group mb-6">
+                    <label class="form-label">PNR</label>
+                    <h5>{{bookingDetails.pnr}}</h5>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group mb-6">
+                    <label class="form-label">Journey Date</label>
+                    <h5>{{bookingDetails.journeyDate}}</h5>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group mb-3">
+                    <label class="form-label">Total Fare</label>
+                    <h5>{{bookingDetails.totalFare}}</h5>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group mb-3">
+                    <label class="form-label">Booking Status</label>
+                    <h5>{{bookingDetails.bookingStatus}}</h5>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label class="form-label">Total Fare</label>
+                    <h5>{{bookingDetails.totalFare}}</h5>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label class="form-label">Booking Status</label>
+                    <h5>{{bookingDetails.bookingStatus}}</h5>
+                  </div>
+                </div>
+              </div>  -->
+              <div class="row">
+                <h5 class="mb-3">Passenger Details</h5>
+                @for (passenger of bookingDetails.passengers; track passenger;let index = $index) {
+                    <h6 class="mt-0">Passenger {{ index + 1 }}</h6>
+                    <div class="col-md-4">
+                      <label class="form-label">Name</label>
+                      <h5>{{passenger.name}}</h5>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">Age</label>
+                      <h5>{{passenger.age}}</h5>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">Gender</label>
+                      <h5>{{passenger.gender}}</h5>
+                    </div>
+                }
+              </div>
+            </div>  
+              
+              <!-- <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label class="form-label" for="firstName">First Name*</label>
+                    <input [(ngModel)]="firstName" type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required #firstNameInput="ngModel" />
+                    @if(firstNameInput.invalid && (firstNameInput.dirty || firstNameInput.touched)){
+                      <div class="text-danger">First Name is required.</div>
+                    }
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label class="form-label" for="lastName">Last Name*</label>
+                    <input [(ngModel)]="lastName" type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required #lastNameInput="ngModel" />
+                    @if(lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)){
+                      <div class="text-danger">Last Name is required.</div>
+                    }
+                  </div>
+                </div>
+              </div> -->
+              <!-- <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label class="form-label" for="userName">Source Station</label>
+                    <input [(ngModel)]="trainName" type="text" class="form-control" id="trainName" name="trainName" placeholder="Train Name" required #trainNameInput="ngModel" />
+                    @if(trainNameInput.invalid && (trainNameInput.dirty || trainNameInput.touched)){
+                      <div class="text-danger">Train Name is required.</div>
+                    }
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label class="form-label" for="userName">Destination Station</label>
+                    <input [(ngModel)]="trainNumber" type="text" class="form-control" id="trainNumber" name="trainNumber" placeholder="Train Number" required #trainNumberInput="ngModel" />
+                    @if(trainNumberInput.invalid && (trainNumberInput.dirty || trainNumberInput.touched)){
+                      <div class="text-danger">Train Number is required.</div>
+                    }
+                  </div>
+                </div>
+              </div> -->
+              <!-- <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label class="form-label" for="sourceStation">Source Station</label>
+                    <select [(ngModel)]="sourceStation" class="form-control" id="sourceStation" name="sourceStation" required #sourceStationInput="ngModel">
+                      <option value="" disabled selected>Select Train Route</option>
+                      @if(stationOptions){
+                        @for(station of stationOptions; track station ){
+                          <option [value]="station.id">{{station.name}}</option>
+                        }
+                      }
+                    </select>
+                    @if(sourceStationInput.invalid && (sourceStationInput.dirty || sourceStationInput.touched)){
+                      <div class="text-danger">Train Station is required.</div>
+                    }
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label class="form-label" for="sourceStation">Destination Station</label>
+                    <select [(ngModel)]="sourceStation" class="form-control" id="sourceStation" name="sourceStation" required  #sourceStationInput="ngModel">
+                      <option value="" disabled selected>Select Train Route</option>
+                      @if(stationOptions){
+                        @for(station of stationOptions; track station ){
+                          <option [value]="station.id">{{station.name}}</option>
+                        }
+                      }
+                    </select>
+                    @if(sourceStationInput.invalid && (sourceStationInput.dirty || sourceStationInput.touched)){
+                      <div class="text-danger">Train Station is required.</div>
+                    }
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label class="form-label" for="userName">Total Seats</label>
+                    <input [(ngModel)]="totalSeats" type="text" class="form-control" id="totalSeats" name="totalSeats" placeholder="Total Seats" required #totalSeatsInput="ngModel" />
+                    @if(totalSeatsInput.invalid && (totalSeatsInput.dirty || totalSeatsInput.touched)){
+                      <div class="text-danger">Total Seats is required.</div>
+                    }
+                  </div>
+                </div>
+              </div> -->
+              <!-- <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group mb-3">
+                    <label class="form-label" for="userName">Date</label>
+                    <input [(ngModel)]="date" type="date" [min]="currentDate | date:'yyyy-MM-dd'" class="form-control" id="date" name="date" placeholder="date" required #dateInput="ngModel" />
+                    @if(dateInput.invalid && (dateInput.dirty || dateInput.touched)){
+                      <div class="text-danger">Date is required.</div>
+                    }
+                  </div>
+                </div>
+                  <div class="col-md-4">
+                    <div class="form-group mb-3">
+                      <label class="form-label" for="userName">Departure time</label>
+                      <input [(ngModel)]="departureTime" type="time"  class="form-control" id="departureTime" name="departureTime" placeholder="departureTime" required #departureTimeInput="ngModel" />
+                      @if(departureTimeInput.invalid && (departureTimeInput.dirty || departureTimeInput.touched)){
+                        <div class="text-danger">Departure Time is required.</div>
+                      }
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group mb-3">
+                      <label class="form-label" for="userName">Arrival time</label>
+                      <input [(ngModel)]="arrivalTime" type="time"  class="form-control" id="arrivalTime" name="arrivalTime" placeholder="arrivalTime" required #arrivalTimeInput="ngModel" />
+                      @if(arrivalTimeInput.invalid && (arrivalTimeInput.dirty || arrivalTimeInput.touched)){
+                        <div class="text-danger">Arrival Time is required.</div>
+                      }
+                    </div>
+                  </div>
+                </div> -->
+                <!-- <div class="form-group mb-3">
+                  <label class="form-label" for="numberOfPassengers">Number of Passengers</label>
+                  <input class="form-control" type="number" id="numberOfPassengers" [(ngModel)]="numberOfPassengers" name="numberOfPassengers" (change)="updatePassengerCount()" min="1" required />
+                </div> -->
+
+                <!-- <div class="row"> -->
+              
+                  <!-- @for (passenger of passengers; track passenger;let index = $index) {
+                      <h6 class="mt-3">Passenger {{ index + 1 }}</h6>
+                      <div class="col-md-4">
+                        <label class="form-label" for="name{{ index }}">Name</label>
+                      </div>
+                      <div class="col-md-4">
+                        <label class="form-label" for="age{{ index }}">Age</label>
+                      </div>
+                      <div class="col-md-4">
+                        <label class="form-label" for="gender{{ index }}">Gender</label>
+                      </div>
+                  } -->
+                    <!-- <div *ngFor="let passenger of passengers; let i = index">
+                      <h4>Passenger {{ i + 1 }}</h4>
+                      <label for="name{{ i }}">Name:</label>
+                      <input type="text" id="name{{ i }}" [(ngModel)]="passenger.name" name="name{{ i }}" required />
+                  
+                      <label for="age{{ i }}">Age:</label>
+                      <input type="number" id="age{{ i }}" [(ngModel)]="passenger.age" name="age{{ i }}" required min="0" />
+                  
+                      <label for="gender{{ i }}">Gender:</label>
+                      <select id="gender{{ i }}" [(ngModel)]="passenger.gender" name="gender{{ i }}" required>
+                        <option value="" selected disabled>Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div> -->
+                <!-- </div> -->
+              <!-- <div class="form-group mb-3">
+                <label class="form-label" for="userName">Username</label>
+                <input [(ngModel)]="userName" type="text" class="form-control" id="userName" name="userName" placeholder="Username" required #userNameInput="ngModel" />
+                @if(userNameInput.invalid && (userNameInput.dirty || userNameInput.touched)){
+                  <div class="text-danger">Username is required.</div>
+                }
+              </div> -->
+              <!-- <div class="form-group mb-3">
+                <label class="form-label" for="emailAddress">Email Address*</label>
+                <input type="email" class="form-control" id="emailAddress" placeholder="Email Address" />
+              </div> -->
+              <!-- <div class="form-group mb-3">
+                <label class="form-label" for="password">Password</label>
+                <input [(ngModel)]="password" type="password" class="form-control" id="password" name="password" placeholder="Password" required #passwordInput="ngModel" />
+                @if(passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)){
+                  <div class="text-danger">Password is required.</div>
+                }
+              </div> -->
+              <!-- <input [(ngModel)]="userType" type="text" class="form-control" id="userType" name="userType" placeholder="User Type" value="1" hidden #userTypeInput="ngModel" /> -->
+              <!-- <div class="form-group mb-3">
+                <label class="form-label" for="selectClass">Class</label>
+                <select class="form-control" id="selectClass" placeholder="Select Class" >
+                  <option value="A/C">A/C</option>
+                  <option value="Non-A/C">Non-A/C</option>  
+                </select>
+              </div> -->
+              <!-- <div class="form-group mb-3">
+                <div class="btn-group" role="group" aria-label="...">
+                  <button type="button" class="btn btn-primary" onclick="window.location.href='http://localhost:8761';">Left</button>
+                  <button type="button" class="btn btn-danger">Middle</button>
+                  <button type="button" class="btn btn-warning">Right</button>
+                </div>
+              </div> -->
+              <!-- <p class="mt-4 text-sm text-muted">
+                By Signing up, you agree to our
+                <a href="javascript:" class="text-primary">Terms of Service</a>
+                and
+                <a href="javascript:" class="text-primary">Privacy Policy</a>
+              </p> -->
+              <div class="row mt-4">
+                <div class="col-md-4">
+                  <div class="d-grid">
+                    <button type="button" class="btn btn-primary" [routerLink]="['/booking-details']">Go Back</button>
+                  </div>
+                </div>
+                @if(bookingDetails.bookingStatus!='CANCELLED' && bookingDetails.journeyDate>=(currentDate|date:'yyyy-MM-dd')){
+                  <div class="col-md-4">
+                    <div class="d-grid">
+                      <button type="button" class="btn btn-primary" (click)="downloadTicket()">Download Ticket</button>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="d-grid">
+                      <button type="button" class="btn btn-danger" (click)="openCancelBookingModal(bookingDetails.pnr)">Cancel Ticket</button>
+                    </div>
+                  </div>
+                }
+                @else{
+                  <div class="col-md-4">
+                    <div class="d-grid">
+                      <button type="button" class="btn btn-secondary" disabled>Download Ticket</button>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="d-grid">
+                      <button type="button" class="btn btn-secondary" disabled>Cancel Ticket</button>
+                    </div>
+                  </div>
+                }
+
+              </div>
+              <!--<div class="saprator mt-3">
+                <span>Sign up with</span>
+              </div>
+              <div class="row">
+                @for (item of SignUpOptions; track item) {
+                  <div class="col-4">
+                    <div class="d-grid">
+                      <button type="button" class="btn mt-2 btn-light-primary bg-light text-muted">
+                        <img src="{{ item.image }}" alt="google img" />
+                        <span class="d-none d-sm-inline-block">{{ item.name }}</span>
+                      </button>
+                    </div>
+                  </div>
+                }
+              </div> -->
+            
+          }
+        </div>
+      </div>
+      
+  </div>
+  <!-- @if(endpoint){
+    <div class="col-sm-12">
+      <app-train-details [endpoint]="endpoint" /> -->
+      <!-- <app-train-details [endpoint]="'http://localhost:8083/trains'" /> -->
+    <!-- </div>
+  } -->
+    
+</div>

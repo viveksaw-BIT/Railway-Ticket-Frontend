@@ -1,0 +1,173 @@
+<!-- <div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="Hello Card" blockClass="pc-component">
+      <p>
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+        in culpa qui officia deserunt mollit anim id est laborum."
+      </p>
+    </app-card>
+  </div>
+</div> -->
+<!-- <p>{{ currentDate | date }}</p> -->
+<div class="row">
+  <div class="col-sm-9">
+      <div class="card my-5">
+        <div class="card-body">
+          <!-- <div class="d-flex justify-content-between align-items-end mb-4">
+            <h3 class="mb-0"><b>Sign up</b></h3>
+            <a [routerLink]="['/login']" class="link-primary">Already have an account?</a>
+          </div> -->
+          @if(successMessage){
+            <div class="alert alert-success alert-success-sm mt-3">
+              {{ successMessage }}
+            </div>
+          }
+          @if(errorMessage){
+            <div class="alert alert-danger alert-danger-sm mt-3">
+              {{ errorMessage }}
+            </div>
+          }
+          @if(validationMessage){
+            <div class="alert alert-danger alert-danger-sm mt-3">
+              {{ validationMessage }}
+            </div>
+          }
+          <!-- <div class="row">
+            <div class="col-md-12 text-center">
+              <img class="img-fluid rounded-circle" src="assets/images/user/avatar-2.jpg" />
+            </div>
+           </div>  -->
+          <form (ngSubmit)="onSubmit()" #registerForm="ngForm">  
+            <!-- <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="form-label" for="firstName">First Name*</label>
+                  <input [(ngModel)]="firstName" type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required #firstNameInput="ngModel" />
+                  @if(firstNameInput.invalid && (firstNameInput.dirty || firstNameInput.touched)){
+                    <div class="text-danger">First Name is required.</div>
+                  }
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="form-label" for="lastName">Last Name*</label>
+                  <input [(ngModel)]="lastName" type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required #lastNameInput="ngModel" />
+                  @if(lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)){
+                    <div class="text-danger">Last Name is required.</div>
+                  }
+                </div>
+              </div>
+            </div> -->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="form-label" for="sourceStation">Source</label>
+                  <select [(ngModel)]="sourceStation" class="form-control" id="sourceStation" name="sourceStation" required #sourceStationInput="ngModel">
+                    <option value="" disabled selected>Select Source Station</option>
+                    @if(stationOptions){
+                      @for(station of stationOptions; track station ){
+                        <option [value]="station.id">{{station.name}}</option>
+                      }
+                    }
+                  </select>
+                  @if(sourceStationInput.invalid && (sourceStationInput.dirty || sourceStationInput.touched)){
+                    <div class="text-danger">Source Station is required.</div>
+                  }
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="form-label" for="sourceStation">Destination</label>
+                  <select [(ngModel)]="destinationStation" class="form-control" id="destinationStation" name="destinationStation" required #destinationStationInput="ngModel">
+                    <option value="" disabled selected>Select Destination Station</option>
+                    @if(stationOptions){
+                      @for(station of stationOptions; track station ){
+                        <option [value]="station.id">{{station.name}}</option>
+                      }
+                    }
+                  </select>
+                  @if(destinationStationInput.invalid && (destinationStationInput.dirty || destinationStationInput.touched)){
+                    <div class="text-danger">Destination Station is required.</div>
+                  }
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label class="form-label" for="userName">Date</label>
+              <input [(ngModel)]="date" type="date" [min]="currentDate | date:'yyyy-MM-dd'" class="form-control" id="date" name="date" placeholder="date" required #dateInput="ngModel" />
+              @if(dateInput.invalid && (dateInput.dirty || dateInput.touched)){
+                <div class="text-danger">Date is required.</div>
+              }
+            </div>
+            <!-- <div class="form-group mb-3">
+              <label class="form-label" for="userName">Username</label>
+              <input [(ngModel)]="userName" type="text" class="form-control" id="userName" name="userName" placeholder="Username" required #userNameInput="ngModel" />
+              @if(userNameInput.invalid && (userNameInput.dirty || userNameInput.touched)){
+                <div class="text-danger">Username is required.</div>
+              }
+            </div> -->
+            <!-- <div class="form-group mb-3">
+              <label class="form-label" for="emailAddress">Email Address*</label>
+              <input type="email" class="form-control" id="emailAddress" placeholder="Email Address" />
+            </div> -->
+            <!-- <div class="form-group mb-3">
+              <label class="form-label" for="password">Password</label>
+              <input [(ngModel)]="password" type="password" class="form-control" id="password" name="password" placeholder="Password" required #passwordInput="ngModel" />
+              @if(passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)){
+                <div class="text-danger">Password is required.</div>
+              }
+            </div> -->
+            <!-- <input [(ngModel)]="userType" type="text" class="form-control" id="userType" name="userType" placeholder="User Type" value="1" hidden #userTypeInput="ngModel" /> -->
+            <!-- <div class="form-group mb-3">
+              <label class="form-label" for="selectClass">Class</label>
+              <select class="form-control" id="selectClass" placeholder="Select Class" >
+                <option value="A/C">A/C</option>
+                <option value="Non-A/C">Non-A/C</option>  
+              </select>
+            </div> -->
+            <!-- <div class="form-group mb-3">
+              <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-primary" onclick="window.location.href='http://localhost:8761';">Left</button>
+                <button type="button" class="btn btn-danger">Middle</button>
+                <button type="button" class="btn btn-warning">Right</button>
+              </div>
+            </div> -->
+            <!-- <p class="mt-4 text-sm text-muted">
+              By Signing up, you agree to our
+              <a href="javascript:" class="text-primary">Terms of Service</a>
+              and
+              <a href="javascript:" class="text-primary">Privacy Policy</a>
+            </p> -->
+            <div class="d-grid mt-3">
+              <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Search</button>
+            </div>
+            <!--<div class="saprator mt-3">
+              <span>Sign up with</span>
+            </div>
+            <div class="row">
+              @for (item of SignUpOptions; track item) {
+                <div class="col-4">
+                  <div class="d-grid">
+                    <button type="button" class="btn mt-2 btn-light-primary bg-light text-muted">
+                      <img src="{{ item.image }}" alt="google img" />
+                      <span class="d-none d-sm-inline-block">{{ item.name }}</span>
+                    </button>
+                  </div>
+                </div>
+              }
+            </div> -->
+          </form>
+        </div>
+      </div>
+      
+  </div>
+  @if(endpoint){
+    <div class="col-sm-12">
+      <!-- <app-train-details [endpoint]="endpoint" /> -->
+      <!-- <app-train-details [endpoint]="'http://localhost:8083/trains'" /> -->
+      <app-book-train-details [endpoint]="endpoint" [date]="date" [sourceStation]="sourceStation" [destinationStation]="destinationStation" />
+    </div>
+  }
+</div>

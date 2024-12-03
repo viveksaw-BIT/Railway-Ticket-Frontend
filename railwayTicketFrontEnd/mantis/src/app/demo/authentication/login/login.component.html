@@ -1,0 +1,82 @@
+<div class="auth-main">
+  <div class="auth-wrapper v3">
+    <div class="auth-form">
+      <div class="auth-header">
+        <!-- <a href="javascript:"><img src="assets/images/logo-dark.svg" alt="logo" /></a> -->
+        <!-- <a [routerLink]="['']"><h2>TrainEase</h2></a> -->
+        <a [routerLink]="['']" class="logo d-flex align-items-center me-auto">
+          <img src="assets/img/fast-train-logo-white.png" alt="theme-logo" width="180px" />
+      </a>
+      </div>
+      <div class="card my-5">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-end mb-4">
+            <h3 class="mb-0"><b>Login</b></h3>
+            <a [routerLink]="['/register']" class="link-primary">Don't have an account?</a>
+          </div>
+          @if(errorMessage){
+            <div class="alert alert-danger alert-danger-sm mt-3">
+              {{ errorMessage }}
+            </div>
+            }
+          <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <div class="form-group mb-3">
+              <label class="form-label" for="username">Username</label>
+              <input [(ngModel)]="username" type="text" class="form-control" id="username" name="username" placeholder="Username" required #usernameInput="ngModel" />
+              @if(usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)){
+                <div class="text-danger">Username is required.</div>
+              }
+            </div>
+            <div class="form-group mb-3">
+              <label class="form-label" for="password">Password</label>
+              <input [(ngModel)]="password" type="password" class="form-control" id="password" name="password" placeholder="Password" required #passwordInput="ngModel" />
+              @if(passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)){
+                <div class="text-danger">Password is required.</div>
+              }
+            </div>
+            <div class="d-flex mt-1 justify-content-between">
+              <div class="form-check">
+                <!-- <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked="" />
+                <label class="form-check-label text-muted" for="customCheckc1">Keep me sign in</label> -->
+              </div>
+              <!-- <h5 class="text-secondary f-w-400"><a href="javascript:">Forgot Password? Contact Admin</a></h5> -->
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+            </div>
+            <!-- <div class="saprator mt-3">
+              <span>Login with</span>
+            </div> -->
+            <!-- <div class="row">
+              @for (item of SignInOptions; track item) {
+                <div class="col-4">
+                  <div class="d-grid">
+                    <button type="button" class="btn mt-2 btn-light-primary bg-light text-muted">
+                      <img src="{{ item.image }}" alt="google img" />
+                      <span class="d-none d-sm-inline-block">{{ item.name }}</span>
+                    </button>
+                  </div>
+                </div>
+              }
+            </div> -->
+          </form>
+        </div>
+      </div>
+      <div class="auth-footer row">
+        <!-- <div class=""> -->
+        <div class="col my-1">
+          <p class="m-0 text-white">
+            Copyright ©
+            <a class="text-white" href="javascript:" target="_blank">Online Railway Ticket Booking Portal</a>
+          </p>
+        </div>
+        <div class="col-auto my-1">
+          <ul class="list-inline footer-link mb-0">
+            <li class="list-inline-item text-white" >Made with &#9829; in India</li>
+          </ul>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+</div>

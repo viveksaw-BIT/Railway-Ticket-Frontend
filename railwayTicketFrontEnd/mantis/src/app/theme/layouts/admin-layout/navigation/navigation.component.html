@@ -1,0 +1,14 @@
+<nav>
+  <div class="navbar-wrapper">
+    <div class="m-header">
+      <!-- <a href="javascript:" class="b-brand">
+        <img src="assets/images/logo-dark.svg" alt="theme-logo" class="logo logo-dark logo-lg" />
+      </a> -->
+      <a [routerLink]="['']">
+        <!-- <h2>TrainEase</h2> -->
+        <img src="assets/img/fast-train-logo.png" alt="theme-logo" width="180px" style="margin-top: 8px;"class="logo logo-dark logo-lg" />
+      </a>
+    </div>
+    <app-nav-content (NavCollapsedMob)="navCollapseMob()" class="scroll-div w-100 compact"></app-nav-content>
+  </div>
+</nav>
